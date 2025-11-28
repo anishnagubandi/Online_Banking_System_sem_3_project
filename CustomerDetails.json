@@ -1,0 +1,67 @@
+[ {
+  "username" : "rekhaJhunjhunwala",
+  "password" : "12436",
+  "role" : "Customer",
+  "customerId" : 2,
+  "balance" : 10000.0,
+  "serviceRequests" : [ {
+    "customerId" : 2,
+    "requestId" : 4,
+    "type" : "CreditCard",
+    "status" : "Pending",
+    "amount" : 1000.0
+  }, {
+    "customerId" : 2,
+    "requestId" : 10,
+    "type" : "Loan",
+    "status" : "Pending",
+    "amount" : 1000.0
+  } ]
+}, {
+  "username" : "rv",
+  "password" : "12",
+  "role" : "Customer",
+  "customerId" : 55,
+  "balance" : 500.0,
+  "serviceRequests" : null
+}, {
+  "username" : "rvr",
+  "password" : "12",
+  "role" : "Customer",
+  "customerId" : 61,
+  "balance" : 500.0,
+  "serviceRequests" : null
+}, {
+  "username" : "billGates",
+  "password" : "bill@123",
+  "role" : "Customer",
+  "customerId" : 1,
+  "balance" : 0.0,
+  "serviceRequests" : [ ]
+}, {
+  "username" : "steveJobs",
+  "password" : "steve@123",
+  "role" : "Customer",
+  "customerId" : 5,
+  "balance" : 0.0,
+  "serviceRequests" : [ ]
+}, {
+  "username" : "elonMusk",
+  "password" : "elon@123",
+  "role" : "Customer",
+  "customerId" : 17,
+  "balance" : 148.0,
+  "serviceRequests" : [ {
+    "customerId" : 17,
+    "requestId" : 28,
+    "type" : "Loan",
+    "status" : "REJECTED",
+    "amount" : 1200.0
+  }, {
+    "customerId" : 17,
+    "requestId" : 35,
+    "type" : "CreditCard",
+    "status" : "APPROVED",
+    "amount" : 1245.0
+  } ]
+} ]

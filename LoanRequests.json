@@ -1,0 +1,13 @@
+[ {
+  "customerId" : 2,
+  "requestId" : 10,
+  "type" : "Loan",
+  "status" : "Pending",
+  "amount" : 1000.0
+}, {
+  "customerId" : 17,
+  "requestId" : 28,
+  "type" : "Loan",
+  "status" : "REJECTED",
+  "amount" : 1200.0
+} ]

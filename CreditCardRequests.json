@@ -1,0 +1,13 @@
+[ {
+  "customerId" : 2,
+  "requestId" : 4,
+  "type" : "CreditCard",
+  "status" : "Pending",
+  "amount" : 1000.0
+}, {
+  "customerId" : 17,
+  "requestId" : 35,
+  "type" : "CreditCard",
+  "status" : "APPROVED",
+  "amount" : 1245.0
+} ]
