@@ -1,0 +1,79 @@
+#TO TEST THE API ENDPOINTS.
+
+JAVA PROJECT API ENDPOINTS
+Customer endpoints--->
+URL-http://localhost:8084/
+POST- /customer - for creating a new customer.
+
+Example JSON-->
+
+{
+    "username":"billGates",
+    "password":"bill@123",
+    "balance":0.0,
+    "serviceRequests": []
+    }
+
+DELETE- /customer/delete/{customerId} - for deleting a customer account along with customer history.
+
+
+GET- /customer/customerDetails - for getting data of all customers.
+
+GET- /customer/id/{customerId}  - for getting data of a specific customer.
+
+PUT- /customer/id/{customerId} -for updating details to customerDetails.json.
+
+example JSON-->
+(with new balance to be updated)
+{
+    "username":"billGates",
+    "password":"bill@123",
+    "balance":100.0,
+    "serviceRequests": []
+    }
+
+PUT-/customer/deposit/{customerId}- for
+Updating details to deposits.json and customer details.json during deposit.
+
+example JSON-->
+(with new deposit in the bank)
+{
+    "username":"billGates",
+    "depositAmount":110.0
+    }
+
+PUT-/customer/withdraw/{customerId}-for updating details to withdrawals.json and customer details.json during withdrawal.
+
+example JSON-->
+(with new withdrawal from the bank)
+{
+    "username":"billGates",
+    "withdrawalAmount":10.0
+    }
+
+POST-/customer/request/loan/{customerId}-to allow the customer to create a loan request.
+
+Example JSON-->
+{
+    "type":"Loan",
+    "amount":1234.0
+    }
+
+POST-/customer/request/creditcard/{customerId}-to allow the customer to create a credit card request.
+
+Example JSON-->
+{
+    "type":"CreditCard",
+    "amount":12344.0
+    }
+
+Admin Endpoints--->
+GET-/admin/customerDetails-to get details of all the customers.
+
+GET-/admin/deposits--to get deposit history of the bank.
+
+GET-/admin/withdrawals--to get withdrawal history of the bank.
+
+PUT-/admin/approve/{customerId}/{requestType}/{requestId}-it approves a loan or credit card request.-WORKS(changes reflect in respective requests.json file and customerdetails.json file)(pass requestType as a string with no quotes)
+
+PUT-/admin/reject/{customerId}/{requestType}/{requestId}-it rejects a loan or a credit card request.-WORKS(changes reflect in respective requests.json file and customerdetails.json file)(pass requestType as a string with no quotes)
