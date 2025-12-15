@@ -79,3 +79,6 @@
 - **LoanRequests.json** — to store loan requests.
 
 - **CreditCardRequests.json** — to store requests regarding credit card amount withdrawal.
+
+## Demo video
+- `https://1drv.ms/v/c/cbfad922f512e4f1/IQCxQNU3AjEJSbunf8RlAFCaATIithbz6C5ljlMyZ92mdkk?e=xlZTgM`
