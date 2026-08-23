@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 @RestController
 @RequestMapping("/login")
 public class loginController {
@@ -56,3 +56,5 @@ public class loginController {
         return "Invalid role has been used";
     }
 }
+
+ */

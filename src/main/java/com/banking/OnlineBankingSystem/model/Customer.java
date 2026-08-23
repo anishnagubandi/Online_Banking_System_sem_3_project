@@ -44,7 +44,6 @@ public class Customer extends User {
         this.balance = 0.0;
         this.customerId = ++userId;
     }
-
     public long getCustomerId() {
         return this.customerId;
     }
@@ -59,6 +58,10 @@ public class Customer extends User {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public void printDetails(){
+        System.out.println("customerId: "+this.getCustomerId()+", username: "+this.getUsername()+", balance: "+ this.getBalance());
     }
 
     public List<serviceRequest> getServiceRequests(){

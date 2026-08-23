@@ -1,5 +1,7 @@
 package com.banking.OnlineBankingSystem;
 
+import com.banking.OnlineBankingSystem.DAO.customerDAO;
+import com.banking.OnlineBankingSystem.DAO.customerDAOJDBCImplementation;
 import com.banking.OnlineBankingSystem.model.Customer;
 import com.banking.OnlineBankingSystem.model.serviceRequest;
 import com.banking.OnlineBankingSystem.service.customerService;
@@ -21,8 +23,9 @@ class CustomerServiceTests {
 
     @Test
     void createLoanAndCreditCardRequestsForCustomer() {
-        customerService svc = new customerService();
-        svc.init();
+        customerDAO customerDAO=new customerDAOJDBCImplementation();
+        customerService svc = new customerService(customerDAO);
+       // svc.init();
 
         Customer c = new Customer("testUser", "pass");
         Customer created = svc.createCustomer(c);

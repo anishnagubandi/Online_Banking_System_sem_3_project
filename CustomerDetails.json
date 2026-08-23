@@ -64,4 +64,30 @@
     "status" : "APPROVED",
     "amount" : 1245.0
   } ]
+}, {
+  "username" : "billGates",
+  "password" : "bill@hacked",
+  "role" : "Customer",
+  "customerId" : 7,
+  "balance" : 233.0,
+  "serviceRequests" : [ {
+    "customerId" : 7,
+    "requestId" : 74,
+    "type" : "Loan",
+    "status" : "APPROVED",
+    "amount" : 1234.0
+  }, {
+    "customerId" : 7,
+    "requestId" : 88,
+    "type" : "CreditCard",
+    "status" : "REJECTED",
+    "amount" : 12344.0
+  } ]
+}, {
+  "username" : "billGates",
+  "password" : "bill@123",
+  "role" : "Customer",
+  "customerId" : 20,
+  "balance" : 0.0,
+  "serviceRequests" : [ ]
 } ]

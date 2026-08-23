@@ -10,4 +10,10 @@
   "type" : "Loan",
   "status" : "REJECTED",
   "amount" : 1200.0
+}, {
+  "customerId" : 7,
+  "requestId" : 74,
+  "type" : "Loan",
+  "status" : "APPROVED",
+  "amount" : 1234.0
 } ]

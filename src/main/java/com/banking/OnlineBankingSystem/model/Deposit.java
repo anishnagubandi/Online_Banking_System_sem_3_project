@@ -14,23 +14,17 @@ package com.banking.OnlineBankingSystem.model;
 
 public class Deposit {
     long customerId; //the uniqueId of the customer.
-    String username;// the name of the customer.
     double depositAmount;//the amount the customer wants to deposit.
 
     public Deposit(){}
 
-    public Deposit(long customerId,String username,double depositAmount) {
+    public Deposit(long customerId,double depositAmount) {
         this.customerId=customerId;
-        this.username=username;
         this.depositAmount =depositAmount;
 
     }
-
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username=username;
+    public void printDetails(){
+        System.out.println("customerId: "+this.getCustomerId()+", depositAmount: "+ this.getDepositAmount());
     }
 
     public long getCustomerId(){

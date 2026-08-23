@@ -1,5 +1,5 @@
 #TO TEST THE API ENDPOINTS.
-
+(ALL ENDPOINTS WORKED FOR FILE IMPLEMENTATION.NEED TO CHECK FOR JDBC IMPLEMENTATION)
 JAVA PROJECT API ENDPOINTS
 Customer endpoints--->
 URL-http://localhost:8084/
@@ -16,12 +16,8 @@ Example JSON-->
 
 DELETE- /customer/delete/{customerId} - for deleting a customer account along with customer history.
 
-
-GET- /customer/customerDetails - for getting data of all customers.
-
 GET- /customer/id/{customerId}  - for getting data of a specific customer.
 
-PUT- /customer/id/{customerId} -for updating details to customerDetails.json.
 
 example JSON-->
 (with new balance to be updated)
@@ -32,16 +28,32 @@ example JSON-->
     "serviceRequests": []
     }
 
+*/
+
+//UPDATING A CUSTOMER'S PASSWORD.
+PUT-/id/{customerId}/{oldPassword}/{newPassword} -to allow the customer to update his/her password by giving oldPassword.
+
+//DEPOSITING MONEY IN BANK.
 PUT-/customer/deposit/{customerId}- for
 Updating details to deposits.json and customer details.json during deposit.
 
 example JSON-->
 (with new deposit in the bank)
 {
-    "username":"billGates",
+    "customerId":7,
     "depositAmount":110.0
     }
+<----PROBLEM->
+DEPOSIT IS HAPPENING ONLY HALF.CUSTOMERDETAILS.JSON GETS THE NEWBALANCE BUT THE DEPOSIT IS NOT GETTING RECORDED IN DEPOSITS.JSON.
+<--->
+-->SOLUTION->I DID NOT REMOVE OLD DATA FROM Deposits.json file which caused a json format mismatch issue with the new deposit format.(DO REMOVE OLD DATA WHEN YOU DO THIS).
 
+<---PROBLEM-->
+DEPOSIT IS GETTING ADDED TO CUSTOMER TABLE IN MYSQL BUT DEPOSIT IS NOT BEING ADDED TO DEPOSIT TABLE.
+<--->
+-->SOLUTION->I did not set customerId of the customer object being returned by getcustomerByUd() function.
+
+//WITHDRAWING MONEY FROM BANK.
 PUT-/customer/withdraw/{customerId}-for updating details to withdrawals.json and customer details.json during withdrawal.
 
 example JSON-->
@@ -52,6 +64,7 @@ example JSON-->
     }
 
 POST-/customer/request/loan/{customerId}-to allow the customer to create a loan request.
+
 
 Example JSON-->
 {
@@ -73,6 +86,9 @@ GET-/admin/customerDetails-to get details of all the customers.
 GET-/admin/deposits--to get deposit history of the bank.
 
 GET-/admin/withdrawals--to get withdrawal history of the bank.
+
+//hmm,for the below ones while testing them.i got an error.
+//i forgot to write implements adminDAO for the JDBC implementation.so it was failing entirely.(DO KEEP IN MIND.IT WAS A SILLY MISTAKE BUT IT MATTERED).
 
 PUT-/admin/approve/{customerId}/{requestType}/{requestId}-it approves a loan or credit card request.-WORKS(changes reflect in respective requests.json file and customerdetails.json file)(pass requestType as a string with no quotes)
 

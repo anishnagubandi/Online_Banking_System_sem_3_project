@@ -13,23 +13,18 @@ package com.banking.OnlineBankingSystem.model;
 
 public class Withdraw {
     long customerId; //the uniqueId of the customer.
-    String username;// the name of the customer.
     double withdrawalAmount;//the amount the customer wants to withdraw.
 
     public Withdraw(){}
 
-    public Withdraw(long customerId,String username,double withdrawalAmount) {
+    public Withdraw(long customerId,double withdrawalAmount) {
         this.customerId=customerId;
-        this.username=username;
         this.withdrawalAmount =withdrawalAmount;
 
     }
 
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username=username;
+    public void printDetails(){
+        System.out.println("customerId: "+this.getCustomerId()+", withdrawalAmount: "+ this.getWithdrawalAmount());
     }
 
     public long getCustomerId(){

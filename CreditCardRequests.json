@@ -10,4 +10,10 @@
   "type" : "CreditCard",
   "status" : "APPROVED",
   "amount" : 1245.0
+}, {
+  "customerId" : 7,
+  "requestId" : 88,
+  "type" : "CreditCard",
+  "status" : "REJECTED",
+  "amount" : 12344.0
 } ]

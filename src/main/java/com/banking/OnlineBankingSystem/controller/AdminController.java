@@ -87,7 +87,12 @@ public class AdminController {
      */
     @PutMapping("/approve/{customerId}/{requestType}/{requestId}")
     public ResponseEntity<String> approveRequest(@PathVariable long customerId,@PathVariable String requestType, @PathVariable long requestId) {
-        boolean success = adminService.processServiceRequest(customerId,requestType,requestId, "APPROVED");
+        System.out.println(">>> 1. CONTROLLER HIT! ID: " + customerId + " | Type: " + requestType + " | Req: " + requestId);
+
+        boolean success = adminService.processServiceRequest(customerId, requestType, requestId, "APPROVED");
+
+        System.out.println(">>> 2. SERVICE FINISHED. Success = " + success);
+
         if (success) {
             return ResponseEntity.ok("Request Approved Successfully.");
         }

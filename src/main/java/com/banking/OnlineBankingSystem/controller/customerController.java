@@ -46,11 +46,13 @@ public class customerController {
 
     //LOAD RELATED METHODS.
     //we get all the students.
+    //I COMMENTED THIS METHOD AS IT IS NOT A FEASIBLE ONE.
+    /*
     @GetMapping("/customerDetails")
     public ResponseEntity<List<Customer>> getAllCustomers(){
         return ResponseEntity.ok(customerService.getAllCustomers());// all data is retrieved and a (200 ok) is given.
     }
-
+    */
     //getting a customer using a customerId.
     @GetMapping("/id/{customerId}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable long customerId){
@@ -63,13 +65,27 @@ public class customerController {
 
     //UPDATE related methods.
     //we use this method in case of an update in customer details.
+    //FEELS REDUNDANT.WILL INCLUDE IT IF IT IS NECESSARY LATER.
+    /*
     @PutMapping("/id/{customerId}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable long customerId,@RequestBody Customer customer){
+    public ResponseEntity<Customer> updateCustomerBalance(@PathVariable long customerId,@RequestBody Customer customer){
         Customer updatedCustomer=customerService.updateCustomer(customerId,customer);
         if(updatedCustomer==null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(updatedCustomer);
+    }
+
+     */
+    //UPDATING A CUSTOMER'S PASSWORD.
+    @PutMapping("/id/{customerId}/{oldPassword}/{newPassword}")
+    public ResponseEntity<Void> updateCustomerPassword(@PathVariable long customerId,@PathVariable String oldPassword,@PathVariable String newPassword){
+        boolean success=customerService.updateCustomerPassword(customerId,oldPassword,newPassword);
+        //if password update was successful.
+        if(!success){
+            return ResponseEntity.notFound().build();//we get a (error 404).
+        }
+        return ResponseEntity.noContent().build(); // (204 no content) is returned on success.
     }
 
     //we use this when a customer wants to deposit money into his account based on customerId.
