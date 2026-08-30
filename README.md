@@ -80,7 +80,7 @@ Online_Banking_System_sem_3_project/
 ├── Withdrawals.json
 ├── LoanRequests.json
 ├── CreditCardRequests.json
-├── DemoFile
+├── API_TESTING.md
 ├── pom.xml
 └── README.md
 ```
@@ -198,7 +198,7 @@ Base URL:
 
 ## Testing
 
-For detailed API endpoint testing notes and examples, refer to the [DemoFile](DemoFile).
+For detailed API endpoint testing notes and examples, refer to the [API_TESTING](API_TESTING.md).
 
 ---
 
