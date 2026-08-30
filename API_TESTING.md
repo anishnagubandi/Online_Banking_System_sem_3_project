@@ -1,7 +1,7 @@
 # API Testing
 
 > This file documents the API endpoints and a few notes from testing the project.
-> Please refer to this file when testing or demoing the application.
+> Please refer to this file when testing or demo-ing the application.
 
 ## Java Project API Endpoints
 
