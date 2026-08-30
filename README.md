@@ -1,84 +1,211 @@
 # Online Banking System
 
+A Spring Boot–based **Online Banking System** that supports two user roles: **Customer** and **Admin**.  
+The project is structured using a clean 4-layer architecture (**Model, Controller, Service, DAO**) and uses **JDBC with MySQL** for database connectivity.
+
+---
+
 ## Users
 
-- **Customer** (Multi-customer type)
+- **Customer**
 - **Admin**
 
+---
 
 ## Features
 
-### 1) Customer banking services
-- customer can check his balance.
-- customer can do a deposit.
-- customer can do a withdrawal (This depends on the amount the customer has in the account).
-- customer can send a loan request asking for a loan.
-- customer can send a creditcard request asking for a specific amount.
+### Customer Services
+- Create a new customer account
+- View customer details by ID
+- Delete customer account
+- Update account password
+- Deposit money
+- Withdraw money (with balance checks)
+- Raise loan requests
+- Raise credit card requests
 
-### 2) Admin management services
-- admin can check the following:
-  - customer details list of the bank.
-  - deposits made in the bank.
-  - withdrawals made from bank accounts in the bank.
-- admin can approve or reject the following:
-  - loan requests.
-  - credit card requests asking for a specific amount.
-
-## API endpoints used for customer related data and services.
-
-- **POST** - `/customer` - for creating a new customer.
-
-- **DELETE** - `/customer/id/{customerId}` - for deleting a customer account along with customer history.
-
-- **GET** - `/customer/customerDetails` - for getting data of all customers.
-
-- **GET** - `/customer/id/{customerId}` - for getting data of a specific customer.
-
-- **PUT** - `/customer/id/{customerId}` - for updating details to customerDetails.json.
-
-- **PUT** - `/customer/deposit/{customerId}` - for updating details to deposits.json and customer details.json during deposit.
-
-- **PUT** - `/customer/withdraw/{customerId}` - for updating details to withdrawals.json and customer details.json during withdrawal.
-
-- **POST** - `/customer/request/loan/{customerId}` - to allow the customer to create a loan request.
-
-- **POST** - `/customer/request/creditcard/{customerId}` - to allow the customer to create a credit card request.
+### Admin Services
+- View all customer details
+- View deposit history
+- View withdrawal history
+- Approve loan/credit card requests
+- Reject loan/credit card requests
 
 ---
 
-## API endpoints used for admin services.
+## Architecture
 
-- **GET** - `/admin/customerDetails` - to get details of all the customers.
+This project follows a **4-layer architecture**:
 
-- **GET** - `/admin/deposits` - to get deposit history of the bank.
+1. **Model** – Entity/data classes  
+2. **Controller** – REST API handling  
+3. **Service** – Business logic and validation  
+4. **DAO** – Data access and database operations  
 
-- **GET** - `/admin/withdrawals` - to get withdrawal history of the bank.
-
-- **PUT** - `/admin/approve/{customerId}/{requestType}/{requestId}` - it approves a loan or credit card request (changes reflect in respective requests.json file and customerdetails.json file) (pass requestType as a string with no quotes).
-
-- **PUT** - `/admin/reject/{customerId}/{requestType}/{requestId}` - it rejects a loan or a credit card request (changes reflect in respective requests.json file and customerdetails.json file) (pass requestType as a string with no quotes).
-
-## Collaborators and Contributions
-
-- **Mitansh Shringi** — Handled the Controller and Service components of the Admin.
-
-- **Muawiyah Surve** — Handled the logic of sending loanRequest and creditCardrequests.
-
-- **Anish Nagubandi** — Handled the Model part and the Controller, Service parts of the Customer.
+### Recent Refactoring
+- DAO operations separated from service logic  
+- Service layer streamlined to business logic only  
+- Implementations split and cleaned up for maintainability  
+- JDBC integration introduced for MySQL persistence  
 
 ---
 
-## Files used
+## Tech Stack
 
-- **CustomerDetails.json** — to store details of the customer.
+- Java 21  
+- Spring Boot  
+- Maven  
+- JDBC  
+- MySQL  
+- Lombok  
 
-- **Deposits.json** — to store deposits made in the bank.
+---
 
-- **Withdrawals.json** — to store withdrawal history of the bank.
+## Project Structure (High-Level)
 
-- **LoanRequests.json** — to store loan requests.
+```text
+Online_Banking_System_sem_3_project/
+├── src/
+│   ├── main/
+│   │   └── java/com/banking/OnlineBankingSystem/
+│   │       ├── controller/
+│   │       ├── service/
+│   │       ├── dao/
+│   │       │   └── databaseConnection.java
+│   │       ├── model/
+│   │       └── ...
+│   └── test/
+├── CustomerDetails.json
+├── Deposits.json
+├── Withdrawals.json
+├── LoanRequests.json
+├── CreditCardRequests.json
+├── DemoFile
+├── pom.xml
+└── README.md
+```
 
-- **CreditCardRequests.json** — to store requests regarding credit card amount withdrawal.
+> Note: JSON files are still present from file-based implementation/testing paths, while JDBC + MySQL support has been added.
 
-## Demo video
-- `https://1drv.ms/v/c/cbfad922f512e4f1/IQCxQNU3AjEJSbunf8RlAFCaATIithbz6C5ljlMyZ92mdkk?e=xlZTgM`
+---
+
+## Setup & Run
+
+### 1) Prerequisites
+- Java 21
+- Maven 3.8+
+- MySQL 8+
+
+### 2) Clone Repository
+```bash
+git clone https://github.com/anishnagubandi/Online_Banking_System_sem_3_project.git
+cd Online_Banking_System_sem_3_project
+```
+
+### 3) Configure JDBC Database Connection
+This project uses a dedicated JDBC connection class:
+
+- `src/main/java/com/banking/OnlineBankingSystem/dao/databaseConnection.java`
+
+Update your MySQL details in that file:
+- JDBC URL (example): `jdbc:mysql://localhost:3306/online_banking_system`
+- Username
+- Password
+
+### 4) Build and Run
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+
+Base URL:  
+`http://localhost:8084/`
+
+---
+
+## API Endpoints
+
+### Customer APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/customer` | Create a new customer |
+| DELETE | `/customer/delete/{customerId}` | Delete customer account and history |
+| GET | `/customer/id/{customerId}` | Get customer details by ID |
+| PUT | `/id/{customerId}/{oldPassword}/{newPassword}` | Update customer password |
+| PUT | `/customer/deposit/{customerId}` | Deposit money |
+| PUT | `/customer/withdraw/{customerId}` | Withdraw money |
+| POST | `/customer/request/loan/{customerId}` | Create loan request |
+| POST | `/customer/request/creditcard/{customerId}` | Create credit card request |
+
+### Admin APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/admin/customerDetails` | Get all customer details |
+| GET | `/admin/deposits` | Get deposit history |
+| GET | `/admin/withdrawals` | Get withdrawal history |
+| PUT | `/admin/approve/{customerId}/{requestType}/{requestId}` | Approve loan/credit card request |
+| PUT | `/admin/reject/{customerId}/{requestType}/{requestId}` | Reject loan/credit card request |
+
+---
+
+## Sample Request JSON
+
+### Create Customer
+```json
+{
+  "username": "customerXYZ",
+  "password": "secure@123",
+  "balance": 0.0,
+  "serviceRequests": []
+}
+```
+
+### Deposit
+```json
+{
+  "customerId": 7,
+  "depositAmount": 110.0
+}
+```
+
+### Withdrawal
+```json
+{
+  "username": "userAlpha",
+  "withdrawalAmount": 10.0
+}
+```
+
+### Loan Request
+```json
+{
+  "type": "Loan",
+  "amount": 1234.0
+}
+```
+
+### Credit Card Request
+```json
+{
+  "type": "CreditCard",
+  "amount": 12344.0
+}
+```
+
+---
+
+## Collaborators
+
+- **Mitansh Shringi** — Admin Controller and Service components  
+- **Muawiyah Surve** — Loan and Credit Card request logic  
+- **Anish Nagubandi** — Model layer, Customer Controller/Service components, and JDBC integration  
+
+---
+
+## Demo Video (Old JSON-Only Version)
+
+The following demo was recorded for the **earlier file-based implementation (JSON storage only)**, before JDBC + MySQL integration:
+
+`https://1drv.ms/v/c/cbfad922f512e4f1/IQCxQNU3AjEJSbunf8RlAFCaATIithbz6C5ljlMyZ92mdkk?e=xlZTgM`
