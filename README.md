@@ -196,6 +196,12 @@ Base URL:
 
 ---
 
+## Testing
+
+For detailed API endpoint testing notes and examples, refer to the [DemoFile](DemoFile).
+
+---
+
 ## Collaborators
 
 - **Mitansh Shringi** — Admin Controller and Service components  
