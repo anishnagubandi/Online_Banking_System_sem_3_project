@@ -104,7 +104,3 @@ Example JSON:
 - **PUT** `/admin/reject/{customerId}/{requestType}/{requestId}` — Reject a loan or credit card request.
 
 ---
-
-## Demo Reference
-
-Please refer to this `API_TESTING.md` file for the full endpoint testing notes and examples.
